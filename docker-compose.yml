@@ -1,0 +1,19 @@
+version: "2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - mongo-alpine
+  mongo-alpine:
+    container_name: mongo-alpine
+    image: faroukhajji329/mongo-alpine:mongo-alpine
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+
+
